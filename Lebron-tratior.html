@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Dunked On!</title>
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #d7dbef;
+        }
+
+        .container {
+            position: relative;
+            height: 100%;
+            left: auto;
+            right: auto;
+            top: 0;
+            bottom: 0;
+        }
+
+        .trooper {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            height: 100%;
+            text-align: center;
+        }
+
+        .player {
+            position: fixed;
+            left: auto;
+            right: auto;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .timer {
+            position: absolute;
+            margin-left: 30px;
+            right: 30px;
+            top: 30px;
+            font-size: 48pt;
+            font-family: monospace;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .credits {
+            position: absolute;
+            bottom: 0;
+            left: auto;
+            right: auto;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="contrainer">
+    <img class="trooper" src="http://assets.nydailynews.com/polopoly_fs/1.2680446.1466433567!/img/httpImage/block.gif">
+    <div class="timer">You have blown  <span id="time">0</span> 3-1 leads</div>
+</div>
+<audio loop class="player" autoplay>
+    <source src="sickspins.ogg" type="audio/ogg">
+</audio>
+<div class="credits">idea by <a href="https://twitter.com/ItsukiTheEsper" target="_blank">@ItsukiTheEsper</a>,
+    implementation by <a href="https://twitter.com/Viruzzzkun" target="_blank">@Viruzzzkun</a>
+    ...and by the way... <a href="#" onclick="$('#credits').toggle('slow');">take a look at what we actually proud
+        of</a>
+    <div style="display: none;" id="credits">
+        <p><a href="https://twitter.com/ItsukiTheEsper" target="_blank">@ItsukiTheEsper</a> is <a
+                href="https://tokyorider.bandcamp.com/" target="_blank">Tokyo Rider</a></p>
+        <p><a href="https://twitter.com/Viruzzzkun" target="_blank">@Viruzzzkun</a> is <a
+                href="https://bad-band.bandcamp.com/" target="_blank">Between August and December</a></p>
+    </div>
+</div>
+<script language="javascript">
+    if (!Date.now) {
+        Date.now = function () {
+            return new Date().getTime();
+        }
+    }
+    var now = Date.now(),
+            fn = function () {
+                document.getElementById("time").innerHTML = String(Math.floor((Date.now() - now) / 1000));
+            };
+    setInterval(fn, 100);
+</script>
+</body>
+</html>
